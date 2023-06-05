@@ -1,0 +1,42 @@
+.toggleSwitch{
+    width: 60px;
+    height: 28px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding: 2px 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background: hsl(208, 71%, 47%);
+}
+
+.toggleCircle{
+    width: 22px;
+    height: 22px;
+    background: #FFF;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.toggleIcon{
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.toggleInput {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.toggleInput:checked ~ .toggleCircle{
+    transform: translateX(-28px);
+    -webkit-transform: translateX(-28px);
+    -ms-transform: translateX(-28px);
+}
+
+.toggleInput:checked ~ .toggleIcon{
+    transform: translateX(28px);
+    -webkit-transform: translateX(28px);
+    -ms-transform: translateX(28px);
+}
