@@ -8,12 +8,14 @@ const darkSlice = createSlice({
         isDark: false,
     },
     reducers: {
-        toggleDark(state, action) {
+        toggleDark(state) {
             state.isDark = !state.isDark;
             if (state.isDark) {
-                bodyElement.style.backgroundColor = "#000";
+                bodyElement.style.backgroundColor = "#222";
+                bodyElement.style.color = "#FFF";
             } else {
                 bodyElement.style.backgroundColor = "#FFF";
+                bodyElement.style.color = "#000";
             }
         },
     },
