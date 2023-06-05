@@ -16,28 +16,3 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     user-select: none;
 }
-
-.selectBody{
-    width: 100%;
-    margin-top: 2px;
-    border-radius: 4px;
-    position: absolute;
-    overflow: hidden;
-    z-index: 10;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-
-.selectItem{
-    display: flex;
-    align-items: center;
-    gap:6px;
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 4px 8px;
-}
-
-.selectItem:hover{
-    font-weight:bold;
-    background: var(--SelectOptionBackground);
-}

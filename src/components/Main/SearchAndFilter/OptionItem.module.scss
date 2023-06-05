@@ -1,0 +1,14 @@
+.selectItem{
+    display: flex;
+    align-items: center;
+    gap:6px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.selectItem:hover{
+    font-weight:bold;
+    background: var(--SelectOptionBackground);
+}
