@@ -6,7 +6,7 @@ const Search = () => {
     const isDark = useSelector((state) => state.dark.isDark);
     return (
         <div className="max-w-md w-full">
-            <h2 className="text-2xl font-semibold">Search a country name:</h2>
+            <h2 className="text-2xl font-semibold">Search a country:</h2>
             <div className="flex items-center justify-between w-full h-8 mt-8">
                 <input
                     type="text"

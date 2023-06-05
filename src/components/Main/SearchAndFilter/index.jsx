@@ -3,7 +3,7 @@ import Search from "./Search";
 
 const SearchAndFilter = () => {
     return (
-        <div className="flex items-center justify-between">
+        <div className="flex justify-between">
             <Search />
             <Filter />
         </div>

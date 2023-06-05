@@ -15,11 +15,7 @@ const SwitchMode = () => {
         dispatch(darkActions.toggleDark());
     };
     return (
-        <div
-            htmlFor="darkToggler"
-            className={classes.toggleSwitch}
-            onClick={toggleHandler}
-        >
+        <div className={classes.toggleSwitch} onClick={toggleHandler}>
             <input
                 type="checkbox"
                 className={classes.toggleInput}
