@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     getCountries,
     getCountriesByRegion,
+    getCountriesBySearch,
 } from "../../../store/countries/countriesActions";
 import { useEffect } from "react";
 
@@ -17,10 +18,12 @@ const Countries = () => {
     useEffect(() => {
         if (slug.regionName) {
             dispatch(getCountriesByRegion(slug.regionName));
+        } else if (slug.search) {
+            dispatch(getCountriesBySearch(slug.search));
         } else {
             dispatch(getCountries());
         }
-    }, [dispatch, slug.regionName]);
+    }, [dispatch, slug.regionName, slug.search]);
 
     return (
         <ScrollBar

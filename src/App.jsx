@@ -4,6 +4,7 @@ import "./App.css";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
+import Search from "./pages/Search";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: "country/:countryName",
                 element: <Detail />,
+            },
+            {
+                path: "search/:search",
+                element: <Search />,
             },
         ],
     },
