@@ -4,15 +4,25 @@ import { FaChevronDown } from "react-icons/fa";
 
 import classes from "./FilterList.module.scss";
 import FilterOptions from "./FilterOptions";
+import { useParams } from "react-router-dom";
 
 const Filter = () => {
     const selectRef = useRef();
     const [isShowOptions, setIsShowOptions] = useState(false);
+    const { regionName } = useParams();
+    const [regionSelected, setRegionSelected] = useState("All");
     const showOptionsHandler = (e) => {
         if (selectRef.current) {
             setIsShowOptions(selectRef.current.contains(e.target));
         }
     };
+    useEffect(() => {
+        if (regionName) {
+            setRegionSelected(regionName);
+        } else {
+            setRegionSelected("All");
+        }
+    }, [regionName]);
     useEffect(() => {
         if (isShowOptions) {
             document.addEventListener("click", showOptionsHandler);
@@ -30,7 +40,7 @@ const Filter = () => {
                     onClick={showOptionsHandler}
                     ref={selectRef}
                 >
-                    <span>All</span>
+                    <span>{regionSelected}</span>
                     <FaChevronDown />
                 </div>
                 <FilterOptions isShowOptions={isShowOptions} />
