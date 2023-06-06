@@ -1,21 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const bodyElement = document.getElementsByTagName("BODY")[0];
-
 const darkSlice = createSlice({
     name: "dark",
     initialState: {
         isDark: false,
+        theme: "lightTheme",
     },
     reducers: {
         toggleDark(state) {
             state.isDark = !state.isDark;
-            if (state.isDark) {
-                bodyElement.style.backgroundColor = "#222";
-                bodyElement.style.color = "#FFF";
+            if (state.theme === "lightTheme") {
+                state.theme = "darkTheme";
             } else {
-                bodyElement.style.backgroundColor = "#FFF";
-                bodyElement.style.color = "#000";
+                state.theme = "lightTheme";
             }
         },
     },
