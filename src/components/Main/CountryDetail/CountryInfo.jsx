@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import classes from "./CountryInfo.module.scss";
-import { Link } from "react-router-dom";
+import ScrollBar from "react-perfect-scrollbar";
 
 const getCurrencies = (country) => {
     const currencies = country.currencies;
@@ -65,126 +66,133 @@ const CountryInfo = () => {
                 });
         }
     }, [country]);
-    console.log(countriesBorder);
+
     return (
-        <div className={classes.detailInfo}>
-            {country && (
-                <>
-                    <h3 className={classes.countryName}>
-                        {country.name.official}
-                    </h3>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Common Name
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {!country.name.common
-                                        ? "No native name found"
-                                        : country.name.common}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Offical
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {!country.name.official
-                                        ? "No official name found"
-                                        : country.name.official}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Population
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {!country.population
-                                        ? "No population found"
-                                        : country.population}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Region
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {!country.region
-                                        ? "No region found"
-                                        : country.region}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Sub Region
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {!country.subregion
-                                        ? "No sub region found"
-                                        : country.subregion}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Capital
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {getCapitals(country)}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Currencies
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {getCurrencies(country)}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Languages
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__value}>
-                                    {getLanguages(country)}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className={classes.detailInfo__title}>
-                                    Border Countries
-                                </td>
-                                <td>:</td>
-                                <td className={classes.detailInfo__borderList}>
-                                    {countriesBorder &&
-                                        countriesBorder.map((border) => (
-                                            <Link
-                                                key={border}
-                                                to={`/country/${border}`}
-                                            >
-                                                <div
-                                                    className={
-                                                        classes.detailInfo__borderItem
-                                                    }
-                                                >
-                                                    {border}
-                                                </div>
-                                            </Link>
-                                        ))}
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </>
-            )}
-        </div>
+        <ScrollBar style={{ maxHeight: "70vh", overflow: "hidden" }}>
+            <div className={classes.detailInfo}>
+                {country && (
+                    <>
+                        <h3 className={classes.countryName}>
+                            {country.name.official}
+                        </h3>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Common Name
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {!country.name.common
+                                            ? "No native name found"
+                                            : country.name.common}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Offical
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {!country.name.official
+                                            ? "No official name found"
+                                            : country.name.official}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Population
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {!country.population
+                                            ? "No population found"
+                                            : country.population}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Region
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {!country.region
+                                            ? "No region found"
+                                            : country.region}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Sub Region
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {!country.subregion
+                                            ? "No sub region found"
+                                            : country.subregion}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Capital
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {getCapitals(country)}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Currencies
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {getCurrencies(country)}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Languages
+                                    </td>
+                                    <td>:</td>
+                                    <td className={classes.detailInfo__value}>
+                                        {getLanguages(country)}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className={classes.detailInfo__title}>
+                                        Border Countries
+                                    </td>
+                                    <td>:</td>
+                                    <td
+                                        className={
+                                            classes.detailInfo__borderList
+                                        }
+                                    >
+                                        {countriesBorder
+                                            ? countriesBorder.map((border) => (
+                                                  <Link
+                                                      key={border}
+                                                      to={`/country/${border}`}
+                                                  >
+                                                      <div
+                                                          className={
+                                                              classes.detailInfo__borderItem
+                                                          }
+                                                      >
+                                                          {border}
+                                                      </div>
+                                                  </Link>
+                                              ))
+                                            : "No countries border found"}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </>
+                )}
+            </div>
+        </ScrollBar>
     );
 };
 
