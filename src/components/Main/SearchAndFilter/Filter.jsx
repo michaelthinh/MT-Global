@@ -5,8 +5,10 @@ import { FaChevronDown } from "react-icons/fa";
 import classes from "./FilterList.module.scss";
 import FilterOptions from "./FilterOptions";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Filter = () => {
+    const theme = useSelector((state) => state.dark.theme);
     const selectRef = useRef();
     const [isShowOptions, setIsShowOptions] = useState(false);
     const { regionName } = useParams();
@@ -32,7 +34,7 @@ const Filter = () => {
         }
     }, [isShowOptions]);
     return (
-        <div>
+        <div className={theme}>
             <h2 className="text-2xl font-semibold">Filter by continents</h2>
             <div className={classes.selectSection}>
                 <div

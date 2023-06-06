@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import classes from "./OptionItem.module.scss";
+import { useSelector } from "react-redux";
 
 const OptionItem = (props) => {
+    const theme = useSelector((state) => state.dark.theme);
     const { region } = props;
     const navigate = useNavigate();
     const changeRegionHandler = () => {
@@ -12,7 +14,10 @@ const OptionItem = (props) => {
         }
     };
     return (
-        <li className={classes.selectItem} onClick={changeRegionHandler}>
+        <li
+            className={`${classes.selectItem} ${theme}`}
+            onClick={changeRegionHandler}
+        >
             <region.icon />
             <span>{region.value}</span>
         </li>

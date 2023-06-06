@@ -10,6 +10,7 @@ import OptionItem from "./OptionItem";
 
 import classes from "./FilterOptions.module.scss";
 import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 
 const RegionList = [
     { icon: GiWorld, value: "All" },
@@ -22,6 +23,7 @@ const RegionList = [
 
 const FilterOptions = ({ isShowOptions }) => {
     const refOptions = useRef();
+    const theme = useSelector((state) => state.dark.theme);
     useEffect(() => {
         const showOptions = () => {
             if (isShowOptions) {
@@ -39,7 +41,7 @@ const FilterOptions = ({ isShowOptions }) => {
         };
     }, [isShowOptions]);
     return (
-        <div className={classes.selectBody} ref={refOptions}>
+        <div className={`${classes.selectBody} ${theme}`} ref={refOptions}>
             <ul>
                 {RegionList.map((region, index) => (
                     <OptionItem region={region} key={index} />
