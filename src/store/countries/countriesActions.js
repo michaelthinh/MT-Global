@@ -6,6 +6,7 @@ import axios from "axios";
 
 export const getCountries = () => {
     return async (dispatch) => {
+        dispatch(countriesActions.setLoading({ value: true }));
         const fetchData = async () => {
             const response = await axios.get(countriesApi + "/all");
 
@@ -16,10 +17,12 @@ export const getCountries = () => {
                 region: country.region,
                 flag: country.flags.png,
             }));
+
             return countries;
         };
         try {
             const countriesData = await fetchData();
+            dispatch(countriesActions.setLoading({ value: false }));
             dispatch(
                 countriesActions.updateCountries({
                     countries: countriesData,
@@ -33,6 +36,7 @@ export const getCountries = () => {
 
 export const getCountryByName = (name) => {
     return async (dispatch) => {
+        dispatch(countriesActions.setLoading({ value: true }));
         const fetchData = async () => {
             const response = await axios.get(
                 countriesApi + `/name/${name}?fullText=true`
@@ -42,6 +46,7 @@ export const getCountryByName = (name) => {
         };
         try {
             const countryData = await fetchData();
+            dispatch(countriesActions.setLoading({ value: false }));
             dispatch(
                 countriesActions.setCountryByName({
                     country: countryData,
@@ -55,6 +60,7 @@ export const getCountryByName = (name) => {
 
 export const getCountriesByRegion = (region) => {
     return async (dispatch) => {
+        dispatch(countriesActions.setLoading({ value: true }));
         const fetchData = async () => {
             const response = await axios.get(
                 countriesApi + `/region/${region}`
@@ -71,6 +77,7 @@ export const getCountriesByRegion = (region) => {
         };
         try {
             const countriesData = await fetchData();
+            dispatch(countriesActions.setLoading({ value: false }));
             dispatch(
                 countriesActions.updateCountries({
                     countries: countriesData,
@@ -84,6 +91,7 @@ export const getCountriesByRegion = (region) => {
 
 export const getCountriesBySearch = (search) => {
     return async (dispatch) => {
+        dispatch(countriesActions.setLoading({ value: true }));
         const fetchData = async () => {
             const response = await axios.get(countriesApi + `/name/${search}`);
 
@@ -98,6 +106,7 @@ export const getCountriesBySearch = (search) => {
         };
         try {
             const countriesData = await fetchData();
+            dispatch(countriesActions.setLoading({ value: false }));
             dispatch(
                 countriesActions.updateCountries({
                     countries: countriesData,

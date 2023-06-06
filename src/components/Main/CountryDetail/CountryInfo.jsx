@@ -68,7 +68,7 @@ const CountryInfo = () => {
     }, [country]);
 
     return (
-        <ScrollBar style={{ maxHeight: "70vh", overflow: "hidden" }}>
+        <ScrollBar style={{ height: "70vh", overflow: "auto" }}>
             <div className={classes.detailInfo}>
                 {country && (
                     <>

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const Main = () => {
     const theme = useSelector((state) => state.dark.theme);
     return (
-        <div className={`py-10 px-64 h-auto ${theme}`}>
+        <div className={`py-10 px-64 h-screen ${theme}`}>
             <SearchAndFilter />
             <Countries />
         </div>

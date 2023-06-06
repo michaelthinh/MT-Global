@@ -8,6 +8,7 @@
 
 html,body{
   scroll-behavior:smooth;
+  overflow: hidden;
 }
 
 html{
@@ -17,4 +18,9 @@ html{
 body{
   font-size:1.6rem;
   font-family: "Poppins", sans-serif;
+}
+
+.ps__rail-x,
+.ps__rail-y {
+  height: 0;
 }

@@ -5,6 +5,7 @@ const countriesSlice = createSlice({
     initialState: {
         countries: [],
         selectedCountry: null,
+        loading: true,
     },
     reducers: {
         updateCountries(state, action) {
@@ -12,6 +13,9 @@ const countriesSlice = createSlice({
         },
         setCountryByName(state, action) {
             state.selectedCountry = action.payload.country;
+        },
+        setLoading(state, action) {
+            state.loading = action.payload.value;
         },
     },
 });
