@@ -3,27 +3,25 @@ import classes from "./CountryItem.module.scss";
 
 const CountryItem = (props) => {
     const theme = useSelector((state) => state.dark.theme);
+    const { country } = props;
     return (
         <div className={`${classes.countryCard} ${theme}`}>
             <div className={classes.countryFlag}>
-                <img
-                    src="https://i5.walmartimages.com/asr/ab69a8c8-1cf6-4d21-aea6-e10947a2caa8.db0198c48db24b262411913205f71328.jpeg"
-                    alt="flag"
-                />
+                <img src={country.flag} alt="flag" />
             </div>
             <div className={classes.countryInfo}>
-                <h3>USA</h3>
+                <h3>{country.name}</h3>
                 <div>
                     Population:
-                    <span> 99.999.999</span>
+                    <span> {country.population}</span>
                 </div>
                 <div>
                     Region:
-                    <span> America</span>
+                    <span> {country.region}</span>
                 </div>
                 <div>
                     Capital:
-                    <span> Washington DC</span>
+                    <span> {country.capital}</span>
                 </div>
             </div>
         </div>

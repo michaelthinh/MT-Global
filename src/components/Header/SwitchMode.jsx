@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { darkActions } from "../../store/darkSlice";
+import { darkActions } from "../../store/dark/darkSlice";
 
 import { BsMoonFill, BsSunFill } from "react-icons/bs";
 import classes from "./SwitchMode.module.scss";

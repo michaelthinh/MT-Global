@@ -7,7 +7,7 @@ const Search = () => {
             <div className="flex items-center justify-between w-full h-8 mt-8">
                 <input
                     type="text"
-                    className="mr-4 overflow-hidden placeholder:italic placeholder:text-slate-400 placeholder:text-md w-full p-2 focus:outline-none focus:border-b-2 shadow-gray-800 "
+                    className="mr-4 !text-black overflow-hidden placeholder:italic placeholder:text-slate-400 placeholder:text-md w-full p-2 focus:outline-none focus:border-b-2"
                     defaultValue=""
                     placeholder="Search for any country"
                 />
