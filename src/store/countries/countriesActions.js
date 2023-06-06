@@ -30,3 +30,25 @@ export const getCountries = () => {
         }
     };
 };
+
+export const getCountryByName = (name) => {
+    return async (dispatch) => {
+        const fetchData = async () => {
+            const response = await axios.get(
+                countriesApi + `/name/${name}?fullText=true`
+            );
+            const country = await response.data[0];
+            return country;
+        };
+        try {
+            const countryData = await fetchData();
+            dispatch(
+                countriesActions.setCountryByName({
+                    country: countryData,
+                })
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};
