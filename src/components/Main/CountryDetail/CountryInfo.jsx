@@ -1,44 +1,71 @@
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import classes from "./CountryInfo.module.scss";
+import { Link } from "react-router-dom";
+
+const getCurrencies = (country) => {
+    const currencies = country.currencies;
+    if (!currencies) {
+        return "No currencies found!";
+    } else {
+        let result = "";
+        for (const key in currencies) {
+            result = result + `${currencies[key].name} : (${key}) `;
+        }
+        return result;
+    }
+};
+const getLanguages = (country) => {
+    const languages = country.languages;
+    if (!languages) {
+        return "No languages found!";
+    } else {
+        let result = "";
+        for (const key in languages) {
+            result = result + `${languages[key]} `;
+        }
+        return result;
+    }
+};
+const getCapitals = (country) => {
+    const capitals = country.capital;
+    if (!capitals) {
+        return "No captials found";
+    } else {
+        let result = "";
+        capitals.forEach((capital) => {
+            result += capital;
+        });
+        return result;
+    }
+};
 
 const CountryInfo = () => {
     const country = useSelector((state) => state.countries.selectedCountry);
-    const getCurrencies = (country) => {
-        const currencies = country.currencies;
-        if (!currencies) {
-            return "No currencies found!";
-        } else {
-            let result = "";
-            for (const key in currencies) {
-                result = result + `${currencies[key].name} : (${key}) `;
-            }
-            return result;
-        }
+
+    const getCountryNameByCode = async (code) => {
+        const result = await axios.get(
+            `https://restcountries.com/v3.1/alpha?codes=${code}`
+        );
+        return result.data;
     };
-    const getLanguages = (country) => {
-        const languages = country.languages;
-        if (!languages) {
-            return "No languages found!";
-        } else {
-            let result = "";
-            for (const key in languages) {
-                result = result + `${languages[key]} `;
-            }
-            return result;
+    const [countriesBorder, setCountriesBorder] = useState([]);
+    useEffect(() => {
+        if (country && country.borders) {
+            getCountryNameByCode(country.borders)
+                .then((res) => {
+                    const countryName = res.map(
+                        (country) => country.name.official
+                    );
+                    setCountriesBorder(countryName);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
-    };
-    const getCapitals = (country) => {
-        const capitals = country.capital;
-        if (!capitals) {
-            return "No captials found";
-        } else {
-            let result = "";
-            capitals.forEach((capital) => {
-                result += capital;
-            });
-            return result
-        }
-    };
+    }, [country]);
+    console.log(countriesBorder);
     return (
         <div className={classes.detailInfo}>
             {country && (
@@ -136,30 +163,20 @@ const CountryInfo = () => {
                                 </td>
                                 <td>:</td>
                                 <td className={classes.detailInfo__borderList}>
-                                    <div
-                                        className={
-                                            classes.detailInfo__borderItem
-                                        }
-                                    >
-                                        China
-                                    </div>
-                                    <div
-                                        className={
-                                            classes.detailInfo__borderItem
-                                        }
-                                    >
-                                        India
-                                    </div>
-                                    {country.borders &&
-                                        country.borders.map((border) => (
-                                            <div
-                                                className={
-                                                    classes.detailInfo__borderItem
-                                                }
+                                    {countriesBorder &&
+                                        countriesBorder.map((border) => (
+                                            <Link
                                                 key={border}
+                                                to={`/country/${border}`}
                                             >
-                                                {border}
-                                            </div>
+                                                <div
+                                                    className={
+                                                        classes.detailInfo__borderItem
+                                                    }
+                                                >
+                                                    {border}
+                                                </div>
+                                            </Link>
                                         ))}
                                 </td>
                             </tr>

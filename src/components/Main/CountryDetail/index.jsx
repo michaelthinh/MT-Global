@@ -11,7 +11,7 @@ const CountryDetail = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const goBackHandler = () => {
-        navigate("/");
+        navigate(-1);
     };
     const country = useSelector((state) => state.countries.selectedCountry);
     useEffect(() => {
