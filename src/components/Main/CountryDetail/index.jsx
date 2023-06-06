@@ -22,7 +22,7 @@ const CountryDetail = (props) => {
     return (
         <>
             {loading ? (
-                <div className="mt-60">
+                <div className="flex justify-center mt-60">
                     <Loading />
                 </div>
             ) : (
